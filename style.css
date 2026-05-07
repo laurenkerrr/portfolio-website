@@ -17,7 +17,9 @@ body {
 
 img {
   width: 100%;
+  height: 100%;
   display: block;
+  object-fit: contain;
 }
 
 .navbar {
@@ -25,7 +27,6 @@ img {
   top: 0;
   z-index: 100;
   background: rgba(246, 241, 235, 0.95);
-  backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +39,6 @@ img {
   color: #1f1b2d;
   font-weight: 800;
   font-size: 20px;
-  letter-spacing: -0.5px;
 }
 
 .nav-links {
@@ -53,25 +53,17 @@ img {
   font-weight: 700;
 }
 
-.nav-links a:hover {
-  color: #9a6246;
-}
-
 .hero {
-  min-height: 92vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   padding: 90px 10%;
-  background:
-    linear-gradient(rgba(31, 27, 45, 0.55), rgba(31, 27, 45, 0.55)),
-    url("images/siete-billboard.png");
-  background-size: cover;
-  background-position: center;
+  background: #1f1b2d;
   color: white;
 }
 
 .hero-content {
-  max-width: 860px;
+  max-width: 850px;
 }
 
 .eyebrow {
@@ -83,14 +75,9 @@ img {
   margin-bottom: 12px;
 }
 
-.hero .eyebrow {
-  color: #f2c9a8;
-}
-
 .hero h1 {
-  font-size: clamp(44px, 7vw, 82px);
+  font-size: clamp(42px, 7vw, 78px);
   line-height: 1;
-  letter-spacing: -3px;
   margin-bottom: 24px;
 }
 
@@ -103,24 +90,11 @@ img {
 .button {
   display: inline-block;
   text-decoration: none;
-  background: #1f1b2d;
+  background: #b9825f;
   color: white;
-  padding: 15px 24px;
+  padding: 14px 24px;
   border-radius: 999px;
   font-weight: 800;
-  transition: 0.2s ease;
-}
-
-.button:hover {
-  background: #9a6246;
-  transform: translateY(-2px);
-}
-
-.button.small {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  padding: 12px 20px;
 }
 
 .section {
@@ -132,7 +106,6 @@ img {
   color: #1f1b2d;
   line-height: 1;
   margin-bottom: 20px;
-  letter-spacing: -2px;
 }
 
 .intro {
@@ -146,11 +119,6 @@ img {
   grid-template-columns: 0.8fr 1.2fr;
   gap: 50px;
   background: #fffaf5;
-}
-
-.about-section p {
-  font-size: 18px;
-  margin-bottom: 18px;
 }
 
 .case-study {
@@ -171,14 +139,9 @@ img {
   color: #f9eee6;
 }
 
-.case-study.dark .tag,
-.case-study.dark .project-number {
-  color: #d7a06e;
-}
-
 .case-header {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 28px;
   align-items: end;
   margin-bottom: 30px;
@@ -192,10 +155,9 @@ img {
 }
 
 .case-header h3 {
-  font-size: clamp(30px, 4vw, 48px);
+  font-size: clamp(30px, 4vw, 46px);
   color: #1f1b2d;
   line-height: 1.05;
-  letter-spacing: -1.5px;
   margin-bottom: 12px;
 }
 
@@ -205,7 +167,7 @@ img {
 }
 
 .big-idea {
-  font-size: 24px;
+  font-size: 23px;
   line-height: 1.2;
   font-weight: 900;
   color: #b9825f;
@@ -213,26 +175,46 @@ img {
 
 .image-grid {
   display: grid;
-  gap: 18px;
-  margin: 28px 0;
+  gap: 22px;
+  margin: 32px 0;
+  align-items: stretch;
 }
 
 .image-grid img {
+  background: #f7f3ee;
   border-radius: 22px;
-  object-fit: cover;
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
+  padding: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
 }
 
+/* Makes 3 campaign images line up evenly */
 .image-grid.three {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.image-grid.featured {
-  grid-template-columns: 1fr 1fr;
+.image-grid.three img {
+  height: 330px;
 }
 
+/* Makes 2 images line up evenly */
+.image-grid.featured {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image-grid.featured img {
+  height: 420px;
+}
+
+/* Single images stay large but controlled */
 .image-grid.one {
   grid-template-columns: 1fr;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-grid.one img {
+  height: 520px;
 }
 
 .case-details {
@@ -246,10 +228,6 @@ img {
   color: #1f1b2d;
   font-size: 18px;
   margin-bottom: 8px;
-}
-
-.case-details p {
-  font-size: 16px;
 }
 
 .resume-section {
@@ -267,7 +245,6 @@ img {
   background: #fffaf5;
   padding: 30px;
   border-radius: 24px;
-  box-shadow: 0 12px 34px rgba(31, 27, 45, 0.08);
 }
 
 .resume-card h3 {
@@ -332,5 +309,11 @@ footer {
   .case-study {
     padding: 26px;
     border-radius: 24px;
+  }
+
+  .image-grid.three img,
+  .image-grid.featured img,
+  .image-grid.one img {
+    height: 360px;
   }
 }
